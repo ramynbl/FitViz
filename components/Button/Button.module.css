@@ -1,0 +1,98 @@
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 32px;
+  border-radius: var(--radius);
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+/* Variante primary : fond vert, texte sombre */
+.primary {
+  background: var(--color-green);
+  color: var(--color-dark);
+  border-color: var(--color-green);
+}
+
+.primary:hover {
+  background: transparent;
+  color: var(--color-green);
+  border-color: var(--color-green);
+}
+
+/* Variante secondary : transparent avec bordure verte */
+.secondary {
+  background: transparent;
+  color: var(--color-green);
+  border-color: var(--color-green);
+}
+
+.secondary:hover {
+  background: var(--color-green);
+  color: var(--color-dark);
+}
+
+/* État désactivé */
+.disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* Variante whitePill */
+.whitePill {
+  background: #ffffff;
+  color: #000000;
+  border-radius: 40px;
+  border: 1px solid #ffffff;
+  font-weight: 600;
+  padding: 10px 24px;
+}
+
+.whitePill:hover {
+  background: rgba(255, 255, 255, 0.8);
+  border-color: rgba(255, 255, 255, 0.8);
+}
+
+/* Variante liquidGlass (Figma export) */
+.liquidGlass {
+  -webkit-backdrop-filter: blur(2.5px) brightness(100.0%) saturate(91.7%) hue-rotate(10.0deg);
+  backdrop-filter: blur(2.5px) brightness(100.0%) saturate(91.7%) hue-rotate(10.0deg);
+  background-color: rgba(0, 0, 0, 0.01);
+  border: 1px solid #ffffff;
+  border-radius: 50px;
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4), inset 1px 0 0 rgba(255, 255, 255, 0.32), inset 0 -1px 1px rgba(0, 0, 0, 0.2), inset -1px 0 1px rgba(0, 0, 0, 0.16);
+  color: #ffffff;
+  padding: 14px 40px;
+}
+
+.liquidGlass:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  transform: translateY(-2px);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5), inset 1px 0 0 rgba(255, 255, 255, 0.4), inset 0 -1px 1px rgba(0, 0, 0, 0.2), inset -1px 0 1px rgba(0, 0, 0, 0.16), 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Variante greenPill */
+.greenPill {
+  background-color: #9BF7C3;
+  color: #00031a; /* Dark text for contrast */
+  border-radius: 50px;
+  border: 1px solid #9BF7C3;
+  font-weight: 700;
+  padding: 14px 40px;
+  box-shadow: 0 4px 15px rgba(155, 247, 195, 0.3);
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.greenPill:hover {
+  background-color: #ffffff;
+  border-color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(255, 255, 255, 0.4);
+}

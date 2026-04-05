@@ -1,0 +1,128 @@
+/* ===== Footer ===== */
+.footer {
+  /* The fond.png acts as the background for the overlapping pricing cards + footer */
+  background-image: url('/fond.png');
+  background-size: cover;
+  background-position: top center;
+  background-repeat: no-repeat;
+  padding: 400px 24px 60px; /* 320px for grid overlap + 80px space */
+  margin-top: 0px; 
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ===== Grand Titre Contact ===== */
+.bigContactText {
+  font-size: clamp(60px, 8vw, 100px);
+  font-family: "Manrope", system-ui, -apple-system, sans-serif;
+  font-weight: 600;
+  color: #ffffff;
+  line-height: 1; /* 100px line-height on 100px text is 1 */
+  margin-bottom: 120px;
+  letter-spacing: -2px;
+}
+
+/* ===== Layout Bas ===== */
+.bottomSection {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 40px;
+  position: relative; /* the figma layout places fitviz brand and legal links precisely */
+}
+
+/* ===== Colonnes de liens ===== */
+.columns {
+  display: flex;
+  gap: 80px; /* or a bit wider to match figma visually */
+}
+
+.column {
+  display: flex;
+  flex-direction: column;
+  gap: 22px; /* from .footerService gap: 22px */
+}
+
+.columnTitle {
+  font-size: 20px;
+  font-weight: 600;
+  color: #ffffff;
+  font-family: "Manrope", system-ui, -apple-system, sans-serif;
+}
+
+.column a {
+  font-size: 15px;
+  color: #ffffff;
+  text-decoration: none;
+  font-family: "Manrope", system-ui, -apple-system, sans-serif;
+  transition: opacity 0.2s ease;
+}
+
+.column a:hover {
+  opacity: 0.7;
+}
+
+/* Links specific container */
+.columnLinks {
+  display: flex;
+  flex-direction: column;
+  gap: 10px; /* from .footerServiceLinks gap: 10px */
+}
+
+/* ===== Cluster Branding Droite ===== */
+.brandCluster {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 30px;
+}
+
+.logo {
+  font-family: "Manrope", system-ui, -apple-system, sans-serif;
+  font-size: 30px;
+  font-weight: 800;
+  color: #ffffff;
+}
+
+.legalLinks {
+  display: flex;
+  gap: 45px; /* from .footerLegal gap: 45px */
+}
+
+.legalLinks p {
+  font-size: 15px;
+  color: #ffffff;
+  font-family: "Manrope", system-ui, -apple-system, sans-serif;
+  white-space: nowrap;
+}
+
+/* ===== Mobile ===== */
+@media (max-width: 900px) {
+  .footer {
+    padding-top: 350px;
+  }
+  .bottomSection {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 60px;
+  }
+  
+  .columns {
+    flex-direction: column;
+    gap: 40px;
+  }
+  
+  .brandCluster {
+    align-items: flex-start;
+  }
+  
+  .legalLinks {
+    flex-direction: column;
+    gap: 16px;
+  }
+}

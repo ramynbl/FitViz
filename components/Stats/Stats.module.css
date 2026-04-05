@@ -1,0 +1,125 @@
+/* ===== Section Stats ===== */
+.stats {
+  padding: 100px 24px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.title {
+  text-align: center;
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 16px;
+  line-height: 1.2;
+}
+
+.subtitle {
+  text-align: center;
+  font-size: 0.95rem;
+  color: rgba(255, 255, 255, 0.5);
+  margin-bottom: 60px;
+  line-height: 1.7;
+}
+
+/* ===== Grille avec image au centre ===== */
+.gridWrapper {
+  display: grid;
+  grid-template-areas:
+    "topLeft center topRight"
+    "bottomLeft center bottomRight";
+  grid-template-columns: 1fr 200px 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 20px;
+  align-items: center;
+}
+
+/* ===== Image centrale ===== */
+.centerImage {
+  grid-area: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.tshirtPlaceholder {
+  width: 160px;
+  height: 190px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  filter: drop-shadow(0 0 40px rgba(155, 247, 195, 0.3));
+}
+
+.tshirtPlaceholder svg {
+  width: 100%;
+  height: 100%;
+}
+
+/* ===== Cartes ===== */
+.card {
+  padding: 28px 24px;
+  border-radius: var(--radius);
+  border: 1px solid var(--glass-border);
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  -webkit-backdrop-filter: blur(var(--glass-blur));
+}
+
+.cardTitle {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #ffffff;
+  margin-bottom: 10px;
+}
+
+.cardStat {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 10px;
+}
+
+.cardText {
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.5);
+  line-height: 1.6;
+}
+
+/* ===== Tablette ===== */
+@media (max-width: 900px) {
+  .gridWrapper {
+    grid-template-areas:
+      "center center"
+      "topLeft topRight"
+      "bottomLeft bottomRight";
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto auto;
+  }
+
+  .centerImage {
+    padding: 20px 0;
+  }
+}
+
+/* ===== Mobile ===== */
+@media (max-width: 600px) {
+  .stats {
+    padding: 60px 16px;
+  }
+
+  .gridWrapper {
+    grid-template-areas:
+      "center"
+      "topLeft"
+      "topRight"
+      "bottomLeft"
+      "bottomRight";
+    grid-template-columns: 1fr;
+  }
+
+  .subtitle br {
+    display: none;
+  }
+}

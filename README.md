@@ -1,36 +1,41 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# FitViz
 
-## Getting Started
+FitViz est une démo SaaS B2B de virtual try-on pour le e-commerce. Elle permet aux utilisateurs d'uploader une photo et un vêtement pour obtenir un aperçu généré par IA grâce à l'intégration de Replicate et Hugging Face.
 
-First, run the development server:
+## Prérequis
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- Node.js 18+
+- Un compte [Cloudinary](https://cloudinary.com/) (pour le stockage des images temporaires)
+- Un compte [Replicate](https://replicate.com/) et/ou [Hugging Face](https://huggingface.co/) (pour la génération d'images avec le modèle IDM-VTON)
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Installation et Setup
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+1. **Installer les dépendances :**
+   ```bash
+   npm install
+   ```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+2. **Configuration de l'environnement :**
+   Copiez le fichier d'exemple pour créer votre fichier `.env.local` :
+   ```bash
+   cp .env.local.example .env.local
+   ```
+   Remplissez les variables d'environnement suivantes dans `.env.local` :
+   - `REPLICATE_API_TOKEN` : Token API de Replicate.
+   - `HUGGINGFACE_API_KEY` : Clé API Hugging Face.
+   - `NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME` : Votre "Cloud Name" provenant du Dashboard Cloudinary.
+   - `CLOUDINARY_API_KEY` : Votre clé API Cloudinary.
+   - `CLOUDINARY_API_SECRET` : Votre secret Cloudinary.
 
-## Learn More
+3. **Lancer l'application :**
+   ```bash
+   npm run dev
+   ```
+   Ouvrez [http://localhost:3000](http://localhost:3000) dans votre navigateur pour voir le résultat.
 
-To learn more about Next.js, take a look at the following resources:
+## Utilisation
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- La section **Hero** présente le projet.
+- La section **Try-On** permet de télécharger deux images : la photo de l'utilisateur (haut du corps) et le vêtement souhaité.
+- En cliquant sur "Générer", l'application effectue l'appel à l'API IA ciblée et affiche le résultat après le temps d'attente (jusqu'à ~60s selon le modèle).
+- La section **Pricing** met en valeur les différents abonnements offerts par votre entreprise e-commerce SaaS.
