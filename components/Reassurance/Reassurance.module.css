@@ -1,11 +1,11 @@
 .section {
   position: relative;
   min-height: 100vh;
-  padding: 120px 24px;
+  padding: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
-  overflow: hidden; /* Prevent floating cards from triggering global scrollbar */
+  overflow: hidden;
 }
 
 .container {
@@ -15,30 +15,6 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  gap: 80px;
-}
-
-/* ===== Header ===== */
-.header {
-  text-align: center;
-}
-
-.title {
-  color: #ffffff;
-  font-family: inherit;
-  font-size: clamp(3rem, 6vw, 5rem);
-  font-weight: 600;
-  line-height: 1.1;
-  margin-bottom: 20px;
-  letter-spacing: -1.5px;
-}
-
-.subtitle {
-  color: rgba(255, 255, 255, 0.8);
-  font-size: clamp(1rem, 1.5vw, 1.1rem);
-  line-height: 1.5;
-  max-width: 600px;
-  margin: 0 auto;
 }
 
 /* ===== Graphics Area ===== */
@@ -52,7 +28,6 @@
   z-index: 0;
 }
 
-/* Adjust graphicsArea to be full width */
 .graphicsArea {
   position: relative;
   width: 100vw;
@@ -67,73 +42,76 @@
 /* ===== Floating Cards (Liquid Glass) ===== */
 .card {
   position: absolute;
-  z-index: 2; /* Overlaps the centerImage */
-  width: 320px;
-  padding: 30px;
-  
-  /* Liquid Glass Styles imported exactly from Pricing styles */
+  z-index: 2;
+  width: 280px;
+  padding: 28px;
+
+  /* Liquid Glass */
   -webkit-backdrop-filter: blur(2.5px) brightness(100.0%) saturate(91.7%) hue-rotate(10.0deg);
   backdrop-filter: blur(2.5px) brightness(100.0%) saturate(91.7%) hue-rotate(10.0deg);
   background-color: rgba(0, 0, 0, 0.01);
   border: 1px solid #ffffff;
   border-radius: 15px;
   box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4), inset 1px 0 0 rgba(255, 255, 255, 0.32), inset 0 -1px 1px rgba(0, 0, 0, 0.2), inset -1px 0 1px rgba(0, 0, 0, 0.16);
-  
+
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 10px;
 }
 
 .card h3 {
   color: #ffffff;
-  font-size: 2.5rem;
+  font-size: 1.8rem;
   font-weight: 700;
   margin: 0;
   line-height: 1.1;
 }
 
 .card .percentText {
-  font-size: 4rem; /* For the big numbers */
+  font-size: 3.5rem;
 }
 
 .card p {
   color: rgba(255, 255, 255, 0.85);
-  font-size: 0.95rem;
+  font-size: 0.9rem;
   line-height: 1.5;
   margin: 0;
 }
 
-/* Specific Positions for the 4 cards to mimic screenshot */
+/* ===== Card Positions — brought closer to center, some overlap the coat ===== */
+
+/* Top-left: overlaps left edge of the coat */
 .cardTopLeft {
-  top: 50px;
-  left: 5%;
+  top: 80px;
+  left: calc(50% - 340px);
 }
 
+/* Top-right: overlaps right edge of the coat — no border version */
 .cardTopRight {
-  top: 150px;
-  right: 5%;
-  background-color: transparent; /* if we want one without border maybe, but request says exact same */
-  border: none;
-  box-shadow: none;
-  backdrop-filter: none;
-  -webkit-backdrop-filter: none;
-  /* Oh wait, screenshot says top right has NO border/glass! It's just floating text */
-}
-
-.cardBottomLeft {
-  bottom: 150px;
-  left: 0%;
+  top: 160px;
+  right: calc(50% - 340px);
   border: none;
   box-shadow: none;
   backdrop-filter: none;
   -webkit-backdrop-filter: none;
   background-color: transparent;
-  /* According to screenshot, bottom left and top right don't have glass borders, only TopLeft and BottomRight do */
 }
 
+/* Bottom-left: no border version, pushed inward */
+.cardBottomLeft {
+  bottom: 160px;
+  left: calc(50% - 300px);
+  border: none;
+  box-shadow: none;
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  background-color: transparent;
+}
+
+/* Bottom-right: with glass, overlapping coat bottom */
 .cardBottomRight {
-  bottom: 0px;
-  right: 15%;
+  bottom: 40px;
+  right: calc(50% - 300px);
 }
 
 /* ===== Responsive Mobile ===== */
@@ -144,12 +122,12 @@
     height: auto;
     min-height: auto;
   }
-  
+
   .centerImage {
     max-width: 300px;
     margin-bottom: 20px;
   }
-  
+
   .card {
     position: relative;
     top: auto !important;
@@ -159,9 +137,8 @@
     width: 100%;
     max-width: 400px;
   }
-  
-  /* Apply glass background nicely on mobile to all or keep them removed */
+
   .cardTopRight, .cardBottomLeft {
-    padding: 0 30px;
+    padding: 0 28px;
   }
 }

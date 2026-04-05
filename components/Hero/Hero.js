@@ -1,27 +1,47 @@
+'use client';
+
+import { useRef } from 'react';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import styles from './Hero.module.css';
 import Button from '@/components/Button/Button';
 
 export default function Hero() {
+  const ref = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ['start start', 'end start'],
+  });
+
+  // Parallax: content moves up faster, video zooms slightly
+  const contentY = useTransform(scrollYProgress, [0, 1], ['0%', '-30%']);
+  const videoScale = useTransform(scrollYProgress, [0, 1], [1, 1.15]);
+  const contentOpacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
+
   return (
-    <section className={styles.hero}>
-      {/* Background Video */}
-      <video
+    <section className={styles.hero} ref={ref}>
+      {/* Background Video with parallax zoom */}
+      <motion.video
         className={styles.videoBg}
         src="/background.mp4"
         autoPlay
         loop
         muted
         playsInline
+        style={{ scale: videoScale }}
       />
 
-      {/* Overlay to ensure text readability */}
+      {/* Overlay */}
       <div className={styles.overlay} />
 
-      <div className={styles.content}>
+      {/* Content with parallax upward drift + fade */}
+      <motion.div
+        className={styles.content}
+        style={{ y: contentY, opacity: contentOpacity }}
+      >
         <h1 className={styles.title}>
           Essayez avant
           <br />
-          d'acheter. Visualisez
+          d&#39;acheter. Visualisez
           <br />
           votre <span className={styles.highlight}>style.</span>
         </h1>
@@ -36,7 +56,7 @@ export default function Hero() {
             Tarifs
           </Button>
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 }
