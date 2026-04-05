@@ -39,7 +39,7 @@ export default function Reassurance() {
             src="/background-2.png"
             alt="Reassurance Background"
             className={styles.centerImage}
-            style={{ y: imageY }}
+            style={{ y: imageY, willChange: "transform" }}
           />
 
           {/* Cartes Flottantes avec animation d'entrée */}

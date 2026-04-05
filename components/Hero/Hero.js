@@ -12,22 +12,20 @@ export default function Hero() {
     offset: ['start start', 'end start'],
   });
 
-  // Parallax: content moves up faster, video zooms slightly
+  // Parallax: content moves up faster
   const contentY = useTransform(scrollYProgress, [0, 1], ['0%', '-30%']);
-  const videoScale = useTransform(scrollYProgress, [0, 1], [1, 1.15]);
   const contentOpacity = useTransform(scrollYProgress, [0, 0.8], [1, 0]);
 
   return (
     <section className={styles.hero} ref={ref}>
-      {/* Background Video with parallax zoom */}
-      <motion.video
+      {/* Background Video */}
+      <video
         className={styles.videoBg}
         src="/background.mp4"
         autoPlay
         loop
         muted
         playsInline
-        style={{ scale: videoScale }}
       />
 
       {/* Overlay */}
